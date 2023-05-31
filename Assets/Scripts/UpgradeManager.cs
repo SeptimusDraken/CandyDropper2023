@@ -22,17 +22,19 @@ public class UpgradeManager : MonoBehaviour
     public int minimumClicksToUnlock;
     public int autoClicksPerSecond;
     public int spawnMultiplier = 1;
+    public int upgradeCostIncrease;
 
 
     // Object identification and spawn location
     public GameObject spawnPrefab;
     public Transform parentObject;
+    public GameObject button;
 
 
     void Start()
     {
         upgradeCostA.text = minimumClicksToUnlock.ToString() + " Candies";
-        upgradeCostM.text = minimumClicksToUnlock.ToString() + " Candies";
+        button = GameObject.Find("Auto");
     }
 
     // Auto clicker per tick
@@ -43,6 +45,9 @@ public class UpgradeManager : MonoBehaviour
             spawnCount += autoClicksPerSecond * Time.deltaTime;
             clicksTotalText.text = spawnCount.ToString("0");
         }
+
+        upgradeCostM.text = minimumClicksToUnlock.ToString() + " Candies";
+
     }
 
     // Upgrade cost
@@ -52,6 +57,8 @@ public class UpgradeManager : MonoBehaviour
         {
             spawnCount -= minimumClicksToUnlock;
             hasUpgradeA = true;
+            // To hide button after clicked
+            button.SetActive(false);
         }
     }
 
@@ -62,7 +69,12 @@ public class UpgradeManager : MonoBehaviour
             spawnCount -= minimumClicksToUnlock;
             hasUpgradeM = true;
         }
+    }
 
+
+    public void IncreaseUpgradeCost(int increaseBy)
+    {
+        minimumClicksToUnlock += increaseBy;
     }
 
 
@@ -71,7 +83,6 @@ public class UpgradeManager : MonoBehaviour
     {
         spawnMultiplier += increaseBy;
     }
-
 
     // Object multiplier + 1
     public void SpawnMultipleObjects()
@@ -83,7 +94,6 @@ public class UpgradeManager : MonoBehaviour
             SpawnObject();
         }
     }
-
 
     // Spawn objects
     public void SpawnObject()

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class TextManager : MonoBehaviour
+public class ButtonManager : MonoBehaviour
 {
 
     // Accessing Text Type
@@ -13,24 +13,36 @@ public class TextManager : MonoBehaviour
     public TMP_Text buttonText2;
 
 
-    // Changing text to " "
-    public void NewText1()
-    {
-        buttonText1.text = "";
-    }
-
     // To quit the game
     public void doExitGame()
     {
         Application.Quit();
     }
 
+    /*
+        // Accessing GameObject
+    GameObject button;
+    // Hide button after clicked.
+    public void Start()
+    {
+        button = GameObject.Find("Auto");
+    }
+    public void HideButton()
+    {
+        button.SetActive(false);
+    }
+     
     public void IWasClicked()
     {
         Debug.Log("Clicked!");
     }
 
-    /*/public void NewText2()
+        // Change text to " "
+    public void NewText1()
+    {
+        buttonText1.text = "";
+    }
+    Public void NewText2()
     {
         buttonText2.text = "";
     }*/

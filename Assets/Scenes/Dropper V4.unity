@@ -736,7 +736,7 @@ GameObject:
   - component: {fileID: 412684752}
   - component: {fileID: 412684751}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: ButtonManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2165,6 +2165,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1949392351}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: IncreaseUpgradeCost
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1442604290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2726,8 +2738,10 @@ MonoBehaviour:
   minimumClicksToUnlock: 10
   autoClicksPerSecond: 1
   spawnMultiplier: 1
+  upgradeCostIncrease: 10
   spawnPrefab: {fileID: 7313640517881808775, guid: 0d9f7bd9b35cedc4fbc806af30947cf4, type: 3}
   parentObject: {fileID: 1906247348}
+  button: {fileID: 271533704}
 --- !u!4 &1949392352
 Transform:
   m_ObjectHideFlags: 0
