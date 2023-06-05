@@ -8,10 +8,14 @@ using System;
 public class ButtonManager : MonoBehaviour
 {
 
-    // Accessing Text Type
-    public TMP_Text buttonText1;
-    public TMP_Text buttonText2;
+    // Accessing text type
+    public TMP_Text buttonText;
 
+    //To hide tect after button clicked
+    public void NewText()
+    {
+        buttonText.text = "";
+    }
 
     // To quit the game
     public void doExitGame()
@@ -19,7 +23,12 @@ public class ButtonManager : MonoBehaviour
         Application.Quit();
     }
 
+
+    //Test and unused code
     /*
+    
+    public TMP_Text buttonText2; 
+     
         // Accessing GameObject
     GameObject button;
     // Hide button after clicked.
@@ -38,10 +47,7 @@ public class ButtonManager : MonoBehaviour
     }
 
         // Change text to " "
-    public void NewText1()
-    {
-        buttonText1.text = "";
-    }
+    
     Public void NewText2()
     {
         buttonText2.text = "";

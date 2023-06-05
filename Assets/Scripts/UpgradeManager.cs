@@ -28,13 +28,18 @@ public class UpgradeManager : MonoBehaviour
     // Object identification and spawn location
     public GameObject spawnPrefab;
     public Transform parentObject;
-    public GameObject button;
+    public GameObject button1;
+    public GameObject button2;
 
-
+    // To show the cost of the upgrade
+    // To access the specific game object buttons
+    // Hide upgrade button
     void Start()
     {
         upgradeCostA.text = minimumClicksToUnlock.ToString() + " Candies";
-        button = GameObject.Find("Auto");
+        button1 = GameObject.Find("Auto");
+        button2 = GameObject.Find("Multi");
+        button2.SetActive(false);
     }
 
     // Auto clicker per tick
@@ -45,23 +50,29 @@ public class UpgradeManager : MonoBehaviour
             spawnCount += autoClicksPerSecond * Time.deltaTime;
             clicksTotalText.text = spawnCount.ToString("0");
         }
-
+        // To show the cost of the upgrade
         upgradeCostM.text = minimumClicksToUnlock.ToString() + " Candies";
 
+        // Show upgrade button after other upgrade clicked
+        if (hasUpgradeA == true)
+        {
+            button2.SetActive(true);
+        }
     }
 
-    // Upgrade cost
+    // Upgrade cost to decrease the total candies
     public void AutoClickUpgrade()
     {
         if (!hasUpgradeA && spawnCount >= minimumClicksToUnlock)
         {
             spawnCount -= minimumClicksToUnlock;
             hasUpgradeA = true;
-            // To hide button after clicked
-            button.SetActive(false);
+            // Hide button after clicked
+            button1.SetActive(false);
         }
     }
 
+    // Upgrade cost to decrease the total candies
     public void MultiClickUpgrade()
     {
         if (!hasUpgradeM && spawnCount >= minimumClicksToUnlock)
@@ -71,7 +82,7 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
-
+    // Increase candy cost for upgrade
     public void IncreaseUpgradeCost(int increaseBy)
     {
         minimumClicksToUnlock += increaseBy;

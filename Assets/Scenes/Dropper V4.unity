@@ -674,7 +674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -754,8 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af04ee96d9aa76498550a2ad22a0b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonText1: {fileID: 2060767002}
-  buttonText2: {fileID: 475655574}
+  buttonText: {fileID: 2060767002}
 --- !u!4 &412684752
 Transform:
   m_ObjectHideFlags: 0
@@ -1093,7 +1092,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -152}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 1050.9, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &657926268
 MonoBehaviour:
@@ -1725,8 +1724,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 412684751}
-        m_TargetAssemblyTypeName: Manager, Assembly-CSharp
-        m_MethodName: NewText1
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: NewText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2545,8 +2544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af04ee96d9aa76498550a2ad22a0b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonText1: {fileID: 0}
-  buttonText2: {fileID: 0}
+  buttonText: {fileID: 0}
 --- !u!1 &1861252552
 GameObject:
   m_ObjectHideFlags: 0
@@ -2741,7 +2739,8 @@ MonoBehaviour:
   upgradeCostIncrease: 10
   spawnPrefab: {fileID: 7313640517881808775, guid: 0d9f7bd9b35cedc4fbc806af30947cf4, type: 3}
   parentObject: {fileID: 1906247348}
-  button: {fileID: 271533704}
+  button1: {fileID: 0}
+  button2: {fileID: 0}
 --- !u!4 &1949392352
 Transform:
   m_ObjectHideFlags: 0
