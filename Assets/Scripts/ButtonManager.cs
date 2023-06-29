@@ -18,7 +18,7 @@ public class ButtonManager : MonoBehaviour
     }
 
     // To quit the game
-    public void doExitGame()
+    public void DoExitGame()
     {
         Application.Quit();
     }

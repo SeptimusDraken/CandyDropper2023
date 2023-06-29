@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.EventSystems;
 
 public class UpgradeManager : MonoBehaviour
 {
@@ -17,9 +18,8 @@ public class UpgradeManager : MonoBehaviour
     bool hasUpgradeA; 
     bool hasUpgradeM;
 
-
     // Intergers
-    public int minimumClicksToUnlock;
+    private int minimumClicksToUnlock = 10;
     public int autoClicksPerSecond;
     public int spawnMultiplier = 1;
     public int upgradeCostIncrease;
@@ -28,8 +28,9 @@ public class UpgradeManager : MonoBehaviour
     // Object identification and spawn location
     public GameObject spawnPrefab;
     public Transform parentObject;
-    public GameObject button1;
-    public GameObject button2;
+    private GameObject buttonAuto;
+    private GameObject buttonMulti;
+
 
     // To show the cost of the upgrade
     // To access the specific game object buttons
@@ -37,13 +38,13 @@ public class UpgradeManager : MonoBehaviour
     void Start()
     {
         upgradeCostA.text = minimumClicksToUnlock.ToString() + " Candies";
-        button1 = GameObject.Find("Auto");
-        button2 = GameObject.Find("Multi");
-        button2.SetActive(false);
+        buttonAuto = GameObject.Find("Auto");
+        buttonMulti = GameObject.Find("Multi");
+        buttonMulti.SetActive(false);
     }
 
     // Auto clicker per tick
-    void Update()
+    public void Update()
     {
         if (hasUpgradeA)
         {
@@ -56,9 +57,11 @@ public class UpgradeManager : MonoBehaviour
         // Show upgrade button after other upgrade clicked
         if (hasUpgradeA == true)
         {
-            button2.SetActive(true);
+            buttonMulti.SetActive(true);
         }
+
     }
+    
 
     // Upgrade cost to decrease the total candies
     public void AutoClickUpgrade()
@@ -68,32 +71,34 @@ public class UpgradeManager : MonoBehaviour
             spawnCount -= minimumClicksToUnlock;
             hasUpgradeA = true;
             // Hide button after clicked
-            button1.SetActive(false);
+            buttonAuto.SetActive(false);
         }
     }
 
     // Upgrade cost to decrease the total candies
+    // Increase candy cost for upgrade
+    // Object multiplier
     public void MultiClickUpgrade()
     {
         if (!hasUpgradeM && spawnCount >= minimumClicksToUnlock)
         {
             spawnCount -= minimumClicksToUnlock;
             hasUpgradeM = true;
+            minimumClicksToUnlock += upgradeCostIncrease;
+            spawnMultiplier++;
         }
     }
 
     // Increase candy cost for upgrade
-    public void IncreaseUpgradeCost(int increaseBy)
+    /*public void IncreaseUpgradeCost(int increaseBy)
     {
         minimumClicksToUnlock += increaseBy;
-    }
-
-
+    }*/
     // Object multiplier
-    public void IncreaseSpawnMultiplier(int increaseBy)
+    /*public void IncreaseSpawnMultiplier(int increaseBy)
     {
         spawnMultiplier += increaseBy;
-    }
+    }*/
 
     // Object multiplier + 1
     public void SpawnMultipleObjects()
@@ -105,6 +110,7 @@ public class UpgradeManager : MonoBehaviour
             SpawnObject();
         }
     }
+
 
     // Spawn objects
     public void SpawnObject()
