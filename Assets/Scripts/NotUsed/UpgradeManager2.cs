@@ -6,7 +6,7 @@ using TMPro;
 using System;
 using UnityEngine.EventSystems;
 
-public class UpgradeManager : MonoBehaviour
+public class UpgradeManager2 : MonoBehaviour
 {
     // Accessing text type
     public TMP_Text clicksTotalText;
@@ -16,9 +16,10 @@ public class UpgradeManager : MonoBehaviour
     // Variables
     float spawnCount;
     bool hasUpgradeA; 
+    bool hasUpgradeM;
 
     // Intergers
-    public int minimumClicksToUnlock = 10;
+    private int minimumClicksToUnlock = 10;
     public int autoClicksPerSecond;
     public int spawnMultiplier = 1;
     public int upgradeCostIncrease;
@@ -41,7 +42,6 @@ public class UpgradeManager : MonoBehaviour
         buttonMulti = GameObject.Find("Multi");
         buttonMulti.SetActive(false);
     }
-
 
     // Auto clicker per tick
     public void Update()
@@ -75,20 +75,30 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
-
     // Upgrade cost to decrease the total candies
     // Increase candy cost for upgrade
     // Object multiplier
     public void MultiClickUpgrade()
     {
-        if (spawnCount >= minimumClicksToUnlock)
+        if (!hasUpgradeM && spawnCount >= minimumClicksToUnlock)
         {
             spawnCount -= minimumClicksToUnlock;
+            hasUpgradeM = true;
             minimumClicksToUnlock += upgradeCostIncrease;
             spawnMultiplier++;
         }
     }
 
+    // Increase candy cost for upgrade
+    /*public void IncreaseUpgradeCost(int increaseBy)
+    {
+        minimumClicksToUnlock += increaseBy;
+    }*/
+    // Object multiplier
+    /*public void IncreaseSpawnMultiplier(int increaseBy)
+    {
+        spawnMultiplier += increaseBy;
+    }*/
 
     // Object multiplier + 1
     public void SpawnMultipleObjects()
